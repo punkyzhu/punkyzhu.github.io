@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="老朱" />
+<meta name="keywords" content="lua,python" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>老朱的摩崖石刻 / 学习 Lua 笔记</title>
+<link href="http://0.0.0.0/feed.xml" rel="alternate" title="老朱的摩崖石刻" type="application/atom+xml" />
+<link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/code/github.css" />
+
+</head>
+
+<body class="page-type-post">
+
+<header>
+	<div class="page-header">
+	<h1><a href="/" class="minor">老朱的摩崖石刻</a></h1><p class="additional">花开花落 .vs. 云卷云舒</p><img class="mountain" src="/assets/img/test1-287x98.png">
+	</div>
+</header>
+
+
+<div class="main">
+	<!-- <header>
+	<div class="page-header">
+	<h1><a href="/" class="minor">老朱的摩崖石刻</a></h1><p class="additional">花开花落 .vs. 云卷云舒</p>
+	</div>
+</header>
+
+ -->
+<article>
+	<h1><a href="/posts/learn-lua.html">学习 Lua 笔记</a></h1>
+	
+	<p class="meta">
+	<span class="datetime">2013-03-28</span> posted in [<a href="/category/digitalm" class="category">数字媒介</a>]
+</p>
+	<h3>1. 是什么</h3>
+
+<p>今天 Lua 发布了 <a href="http://www.lua.org/ftp/lua-5.2.2.tar.gz">5.2.2</a>，这是一个 bug 修复版本，一门令人神往的语言。</p>
+
+<p>Lua 是一个小巧的脚本语言。作者是巴西人。该语言的设计目的是为了嵌入应用程序中，从而为应用程序提供灵活的扩展和定制功能。</p>
+
+<p>Lua 脚本可以很容易的被 C/C++ 代码调用，也可以反过来调用 C/C++ 的函数，这使得 Lua 在应用程序中可以被广泛应用。不仅仅作为扩展脚本，也可以作为普通的配置文件，代替 xml，ini 等文件格式，并且更容易理解和维护。</p>
+
+<p>Lua由标准 C 编写而成，代码简洁优美，几乎在所有操作系统和平台上都可以编译，运行。</p>
+
+<p>一个完整的 Lua 解释器不过200k，在目前所有脚本引擎中，Lua 的速度是最快的。这一切都决定了 Lua 是作为嵌入式脚本的最佳选择。</p>
+
+<h3>2. 哪里学</h3>
+
+<p>官方网站：<a href="http://www.lua.org/home.html">http://www.lua.org/home.html</a></p>
+
+<p>注意它的名字：<strong>Lua</strong></p>
+
+<p>已经发布的书：</p>
+
+<ul>
+<li>Wrox.Beginning.Lua.Programming.Feb.2007.pdf</li>
+<li>Programming in Lua 2nd Edition.pdf</li>
+<li>Programming In Lua CHS.pdf</li>
+</ul>
+
+
+<p>其中中文版由曾经的 luachina.net 翻译，今天发现网站已经打不开了。</p>
+
+<p>官方手册：<a href="http://www.lua.org/manual/5.1/">http://www.lua.org/manual/5.1/</a></p>
+
+<p>用 wget 可将手机抓取到本地：</p>
+
+<pre><code>wget -r -p -k -np http://www.lua.org/manual/5.1/
+</code></pre>
+
+<p>为了访问方便，可以加一个 meta refresh：</p>
+
+<pre><code class="html">&lt;meta http-equiv="refresh" content="0;URL='http://example.com/'"&gt;
+</code></pre>
+
+<h3>3. 安装</h3>
+
+<p>Mac OS X 上我通过 brew 安装</p>
+
+<pre><code>$ brew install lua
+</code></pre>
+
+<p>安装日志：</p>
+
+<pre><code>ChentekiMacBook-Pro:jsoops Christen$ brew install lua
+==&gt; Downloading http://www.lua.org/ftp/lua-5.1.4.tar.gz
+######################################################################## 100.0%
+==&gt; Patching
+patching file Makefile
+patching file src/Makefile
+######################################################################## 100.0%
+patching file lcode.c
+patching file ldblib.c
+patching file liolib.c
+patching file llex.c
+patching file loadlib.c
+patching file lstrlib.c
+patching file lvm.c
+==&gt; make macosx INSTALL_TOP=/usr/local/Cellar/lua/5.1.4 INSTALL_MAN=/usr/local/C
+==&gt; make install INSTALL_TOP=/usr/local/Cellar/lua/5.1.4 INSTALL_MAN=/usr/local/
+/usr/local/Cellar/lua/5.1.4: 15 files, 288K, built in 20 seconds
+
+ChentekiMacBook-Pro:jsoops Christen$ lua
+Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio
+&gt; print (12)
+12
+</code></pre>
+
+<h3>4. 第一个脚本</h3>
+
+<pre><code class="lua">function fact (n)
+  if n == 0 then
+    return 1
+  else
+    return n * fact(n-1)
+end end
+
+print("enter a number:")
+a = io.read("*number")
+
+print(fact(a))
+</code></pre>
+
+<p>很干净的代码！</p>
+
+<h3>5. VS Python</h3>
+
+<p>网上太多关于 Python 和 Lua 选型的争论。其实两种语言我都不太熟悉，OSchina 上的一个网友说得好：</p>
+
+<p><em>fosky 回答于 2011-05-18 08:15：</em></p>
+
+<blockquote><p>当大家都在争论用 Python 还是 Lua 做脚本的时候，WOW 已经发布了 WOW世界 LUA 编程指南。用什么没关系，真正去用就好。</p></blockquote>
+
+<p><em>outrace 回答于 2011-05-18 09:02：</em></p>
+
+<blockquote><p>你什么类型的项目啊？</p>
+
+<p>本人 Python 和 Lua 都有一定经验，提一些自己的看法：</p>
+
+<p>1、脚本担负的任务重，则用 Python，任务轻，则用 Lua。因为 Lua 内置的东西太少。</p>
+
+<p>2、性能要求高，用 Lua。要求不太高，用python。因为 <a href="http://luajit.org/">LuaJIT</a> 性能很强大。性能不行要用 C 写的时候，Lua 跟 C 结合互调要比 Python 跟 C 好一些。</p>
+
+<p>3、希望招人或者培训人快一些。可能 Lua 好一些。因为需要学很少的东西就可以干一定的工作。</p></blockquote>
+
+<p>CSDN 网友 <a href="http://blog.csdn.net/shgaol/article/details/3746477">shgaol</a> 的见解亦是如此：</p>
+
+<p>1、两者的定位不同。 Python 的定位在于自身的独立开发，即是说 Python 定位于自己能解决所有的问题。 Lua 定位在与其它的代码，尤其是 C++ 代码进行相互配合的编译，单独的 Lua 本身没有任何的意义。</p>
+
+<p>2、站在解决问题的角度上看。 Python 依靠自身越来越强大的库，让编程者能实现越来越多，越来越复杂的问题。 Lua 本身则必须与其它的编译语言结合，才能解决问题。以 C++ + Lua 来举例。单独的 C++ ，因为 C++ 的复杂性，在其解决问题提供方便的同时，也给程序员带来了很大的麻烦，这些麻烦主要有两个方面：</p>
+
+<p>1）C++ 本身，特别是能用好 C++ ，对程序员就来说就是一个很高的要求。</p>
+
+<p>2）在解决复杂问题时， C++ 程序结构的复杂性和逻辑实现的复杂性，给程序员对程序的改进和维护带来了很大的麻烦。而 C++ 与Lua的结合，让 C++ 可以只负责为 Lua 提供各种基本的功能函数库，而Lua调用这些库来实现各种逻辑功能。这种分工可以让程序员将程序中的基本代码库和逻辑实现代码进行分离，使程序的效率和可维护有了很大的提高。</p>
+
+<p>所以，如果真的要站在解决问题的角度来对 Python 和 Lua 进行对比的话。实际上，是 C++ 与 Python 进行对比，而与 Lua 无关。</p>
+
+<p>3、 Python 与 C++ 对比，我觉得 Python 与 C++ 对比的优势就在于其所提供的基本库，大大的降低了程序复杂度与可维护性对程序员本身的要求。比如，同样的功能，如果是 C++ 来做的话，可能其程序员必须具备三年的经验，如果是 Python 来做，而 Python 又有解决问题所需要的库的话，一个具有一年程序经验的程序员可能就能完成了。但是，同样的，如果是 C++ 与Lua结合来解决问题的话，可能就只需要半个高级程序员和一个只有c语言一年经验的程序员就可以了。半个高级程序员负责提供 Lua 的函数库，另一个程序员，只需要用这些代码库实现逻辑就行了。</p>
+
+<p>综上所述， C++ + Lua 的开发模式，和 Python 源代码库开发+ Python 脚本开发模式其实是一样的。但是站在程序员的角度上来说， C++ + Lua 就更为简单一些，因为除去基本的 Lua 解释代码外， C++ 可以为 Lua 动态提供各种函数库。而 Python 程序员则必须受制于 Python 所提供的各种功能库。所以，如果解决一些具有普遍性和重复性的问题时， Python 是有优势的，因为有很多的代码可以不用重写，而 C++ + Lua 则必须重构。如果是解决一些非普遍的问题，如果 Python 本身没有提供解决这些问题的库的话， Python 程序员，就必须走回 C++ 的老路了。</p>
+
+	
+	<!--<p class="permalink">永久链接：<a href="http://0.0.0.0/posts/learn-lua.html">http://0.0.0.0/posts/learn-lua.html</a></p>-->
+</article>
+<div id="disqus_thread" class="comments"></div>
+
+
+	<footer>
+		<p>&copy; Since 2012</p>
+	</footer>
+</div>
+
+<aside>
+	<h2><a href="/">老朱的摩崖石刻</a><a href="/feed.xml" class="feed-link" title="Subscribe"><i class="fa fa-rss-square"></i></a></h2>
+	
+	<h3 class="block">文章分类</h3>
+	<nav class="block block-about">
+		<ul class="default">
+		  
+		    
+		    
+		    
+   		    <li class="default"><a href="/category/default/">默认</a>    [2篇文章]</li>
+   		    
+		  
+		    
+		    
+		    
+   		    <li class="crazy"><a href="/category/crazy/">疯狂</a>    [2篇文章]</li>
+   		    
+		  
+		    
+		    
+		    
+   		    <li class="geek"><a href="/category/geek/">技术极客</a>    [1篇文章]</li>
+   		    
+		  
+		    
+		    
+		    
+   		    <li class="mac"><a href="/category/mac/">苹果专区</a>    [1篇文章]</li>
+   		    
+		  
+		    
+		    
+		    
+				<li class="zero_article"><i> 地理信息系统   [加油！还没有文章哦！]</i></li>
+   			
+		  
+		    
+		    
+		    
+   		    <li class="digitalm"><a href="/category/digitalm/">数字媒介</a>    [2篇文章]</li>
+   		    
+		  
+		</ul>
+	</nav>
+	
+	<h3 class="block">最近发表的帖子</h3>
+	<nav class="block block-about">
+        <ul>
+          
+            
+          <li>
+            <a href="/posts/mac%E6%9C%BA%E5%99%A8%E5%AE%89%E8%A3%85jekyll.html">Mac机器安装Jekyll</a><span>「2014-09-03」
+          </li>
+            
+          
+            
+          <li>
+            <a href="/posts/%E6%95%B0%E5%AD%97%E5%AA%92%E4%BD%93%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%9A%91%E6%9C%9F%E9%A1%B9%E7%9B%AE%E5%AE%89%E6%8E%92.html">数字媒体实验室暑期项目安排</a><span>「2014-07-18」
+          </li>
+            
+          
+            
+          <li>
+            <a href="/posts/learn-lua.html">学习 Lua 笔记</a><span>「2013-03-28」
+          </li>
+            
+          
+            
+          <li>
+            <a href="/posts/mac-disk-full.html">Linux 磁盘空间管理</a><span>「2013-03-13」
+          </li>
+            
+          
+            
+          <li>
+            <a href="/posts/doc-value.html">写文档 写总结 写代码</a><span>「2013-03-09」
+          </li>
+            
+          
+            
+          <li>
+            <a href="/posts/my-tech-blogging-like-a-hacker.html">像黑客一样写自己的技术博客</a><span>「2012-03-04」
+          </li>
+            
+          
+            
+          <li>
+            <a href="/posts/hello-world.html">Hello world!</a><span>「2012-03-04」
+          </li>
+            
+          
+        </ul>
+    </nav>
+	
+	<form action="/search/" class="block block-search">
+		<h3>Search</h3>
+		<p><input type="search" name="q" placeholder="Search" /></p>
+	</form>
+	
+	<div class="block block-about">
+		<h3 class="block">About</h3>
+		<figure>
+			<img src="http://en.gravatar.com/avatar/1cd8c12591616d8c22aaa624f8c07834?s=48" />
+			<figcaption><strong>老朱</strong></figcaption>
+		</figure>
+		<p>Write something about yourself.</p>
+	</div>
+	
+	
+	<div class="block block-fork">
+		<a href="https://github.com/punkyzhu"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
+	</div>
+	
+	
+	<div class="block block-thank">
+		<h3>Powered by</h3>
+		<p>
+			<a href="http://disqus.com/" target="_blank">Disqus</a>,
+			<a href="http://elfjs.com/" target="_blank">elf+js</a>,
+			<a href="https://github.com/" target="_blank">GitHub</a>,
+			<a href="http://www.google.com/cse/" target="_blank">Google Custom Search</a>,
+			<a href="http://en.gravatar.com/" target="_blank">Gravatar</a>,
+			<a href="http://softwaremaniacs.org/soft/highlight/en/">HighlightJS</a>,
+			<a href="https://github.com/mojombo/jekyll" target="_blank">jekyll</a>,
+			<a href="https://github.com/mytharcher/SimpleGray" target="_blank">SimpleGray</a>
+		</p>
+	</div>
+</aside>
+
+<script src="http://elfjs.qiniudn.com/code/elf-0.5.0.min.js"></script>
+<script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+
+<script src="/assets/js/site.js"></script>
+
+<script>
+site.URL_GOOGLE_API = 'http://www.google.com/jsapi';
+site.URL_DISCUS_COMMENT = 'your-disqus-short-name' ? 'http://your-disqus-short-name.disqus.com/embed.js' : '';
+
+site.VAR_SITE_NAME = '老朱的摩崖石刻';
+site.VAR_GOOGLE_CUSTOM_SEARCH_ID = '000346898720731947188:13h55x32l0y';
+site.TPL_SEARCH_TITLE = '#{0} / 搜索：#{1}';
+site.VAR_AUTO_LOAD_ON_SCROLL = 2;
+</script>
+</body>
+</html>
