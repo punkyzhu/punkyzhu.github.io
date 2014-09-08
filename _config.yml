@@ -5,7 +5,7 @@ permalink: /posts/:title.html
 exclude:
   - README.md
 
-name: 老朱的摩崖石刻
+name: Z-Plus：摩崖石刻
 host: punkyzhu.github.io
 desc: 花开花落 .vs. 云卷云舒
 
@@ -41,7 +41,7 @@ custom:
 
 meta:
     author:
-        name: 老朱
+        name: Z-Plus
         email: gbzhu4mse@gmail.com
         disqus: your-disqus-short-name              # Disqus缩略标识
         gcse: 000346898720731947188:13h55x32l0y     # Google自定义搜索标识ID
