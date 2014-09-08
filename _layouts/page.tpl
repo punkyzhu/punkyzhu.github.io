@@ -17,8 +17,8 @@
 <body class="{{ page.pageClass }}">
 
 <header>
-	<div class="page-header">
-	<h1>{% if page.title %}<a href="/" class="minor">{{ site.name }}</a></h1><p class="additional">{{ site.desc }}</p>{% else %}<span class="minor">{{ site.name }}</span></h1><span class="additional">{{ site.desc }}</span>{% endif %}<img class="mountain" src="/assets/img/test1-287x98.png">
+	<div class="page-header clearfix">
+	<img class="logo" src="/assets/img/Z-58x58.png"><h1>{% if page.title %}<a href="/" class="minor">{{ site.name }}</a></h1><p class="additional">{{ site.desc }}</p>{% else %}<span class="minor">{{ site.name }}</span></h1><span class="additional">{{ site.desc }}</span>{% endif %}<img class="mountain" src="/assets/img/test1-287x98.png">
 	</div>
 </header>
 

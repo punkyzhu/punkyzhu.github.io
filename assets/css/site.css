@@ -26,10 +26,13 @@ input,textarea{resize:none;}
 		box-shadow: -6px 0 5px 1px rgba(0, 0, 0, .5);
 	}
 	header h1 .minor{
-		margin-left: 70px;
+		margin-left: 10px;
 	}
 	header .additional{
-		margin-left: 72px;
+		margin-left: -166px;
+	}
+	.logo{
+		margin-left: 1px;
 	}
 }
 
@@ -42,10 +45,13 @@ input,textarea{resize:none;}
 		padding: 1em;
 	}
 	header h1 .minor{
-		margin-left: 34px;
+		margin-left: 10px;
 	}
 	header .additional{
-		margin-left: 36px;
+		margin-left: -166px;
+	}
+	.logo{
+		margin-left: 1px;
 	}
 }
 
@@ -54,13 +60,19 @@ header h1 .minor{float:left;
 	margin-bottom: 1px; margin-top: 32px; 
 	color:#ffffff; font-weight:normal;
 }
-header .additional{display: inline-block; float:left; clear:both;
-	 
-	margin-top: 1px; 
-	margin-bottom: 32px;
+header .additional{display: inline-block; float:left;
+	margin-top: 54px; 
+	margin-bottom: 0px;
 	font-size:90%; color:#777;
 }
-
+.logo {
+  display: block;
+  float: left;
+  width: 58px;
+  height: auto;
+  margin-top: 20px;
+  overflow: hidden;
+}
 .page-header {
   background-color: rgb(41, 41, 41);
   position: fixed;
@@ -78,7 +90,7 @@ header .additional{display: inline-block; float:left; clear:both;
   float: right;
   width: 287px;
   height: auto;
-  margin-top: -55px; margin-right: 5px;
+  margin-top: 0px; margin-right: 5px;
   overflow: hidden;
   -webkit-transition: 1s;
   -moz-transition: 1s;
